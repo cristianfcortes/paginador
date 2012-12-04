@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script type="text/javascript" src="paginador.js"></script>
+	<style type="text/css">
+
+		#portaf_pag li {
+			list-style: none;
+			display: inline-block;
+			/*padding: 5px;*/
+			/*background:#ffffff url('fondo.jpg') no-repeat center center;*/
+		}
+		#portaf_pag li a{
+			text-decoration:none;
+			cursor:pointer;
+		}
+		#portaf_pag li a div{
+			background-color: tan;
+			border-radius: 20px;
+			padding: 5px;
+			margin: 2px;
+			width: 20px;
+			text-align: center;	
+		}
+
+
+		.active a div {
+
+			color:#ff0000;
+			background-color: yellow !important;
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<div id="wrap">
+		<ul id="portaf_pag">
+		</ul>
+
+	</div>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+
+	num = 0;
+
+	paginador = new Paginador('portaf_pag', 20, 5);
+	paginador.imprimirPag();
+
+	// paginator ------------------------------------------------------ //
+	
+	$('#portaf_pag').bind('click', function(e) {
+
+		var pag = [];
+		var i;
+		$(this).empty();
+		//var paginador = new Paginador;
+
+		for (i = num; i < num + 5; i++ ){
+			pag = pag.concat(i+1);
+		}
+
+		//console.dir(pag);
+
+		paginador.actualizaActive(e.target);
+		paginador.imprimirPag();
+
+		//$(e.target).text('100')
+		//$(this).lisview('refresh');
+		//if($(e.target).text() != "<<")
+
+		//console.dir(e.target);
+		//alert($(e.target).text());
+
+		return false;
+
+	});	
+});
+
+
+
+</script>
+</body>
+</html>
